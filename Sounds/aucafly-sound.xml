@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+ 
+<PropertyList>
+ <fx>
+
+
+<!-- Current Engine Sound -->
+<engine>
+      <name>engine starting</name>
+      <mode>looped</mode>
+      <path>Aircraft/AUCAFLYCORE/starter.wav</path>
+      <condition>
+	<not-equals>
+	  <property>sim/multiplay/generic/int[7]</property>
+	  <value>0</value>
+	</not-equals>
+      </condition>
+      <volume>
+	<min>0.1</min>
+	<max>1.0</max>
+	<offset>1.0</offset>
+      </volume>
+      <reference-dist>10</reference-dist>
+      <max-dist>500</max-dist>
+    </engine>
+
+    <engine>
+      <name>engine #1 running</name>
+      <mode>looped</mode>
+      <path>Aircraft/AUCAFLYCORE/E1.wav</path>
+<condition>
+	<and>
+	  <equals>
+	    <property>sim/multiplay/generic/float[1]</property>
+	    <value>0</value>
+	  </equals>
+	  <equals>
+	    <property>sim/multiplay/generic/int[6]</property>
+	    <value>1</value>
+	  </equals>
+	</and>
+      </condition>  
+<volume>
+	<property>sim/multiplay/generic/float[6]</property>
+	<factor>3</factor>
+	<min>0.5</min>
+	<max>1.0</max>
+	<offset>0.3</offset>
+      </volume>
+      <delay-sec>1</delay-sec>
+      <reference-dist>10</reference-dist>
+      <max-dist>500</max-dist>
+    </engine>
+
+    <engine>
+      <name>engine speed</name>
+      <mode>looped</mode>
+      <path>Aircraft/AUCAFLYCORE/E2.wav</path>
+      <condition>
+	<and>
+	  <not-equals>
+	    <property>sim/multiplay/generic/float[1]</property>
+	    <value>0</value>
+	  </not-equals>
+	  <equals>
+	    <property>sim/multiplay/generic/int[6]</property>
+	    <value>1</value>
+	  </equals>
+	</and>
+      </condition>
+      <volume>
+	<property>sim/multiplay/generic/float[6]</property>
+	<factor>1</factor>
+	<min>0.3</min>
+	<max>1.0</max>
+	<offset>0.10</offset>
+      </volume>
+      <pitch>
+	<property>sim/multiplay/generic/float[6]</property>
+	<factor>0.15</factor>
+	<min>0.0</min>
+	<max>0.5</max>
+      </pitch>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </engine>
+
+<click>
+      <name>brake-parking on</name>
+      <path>Aircraft/AUCAFLYCORE/Park-Break-On.wav</path>
+       <condition>
+          <property>controls/gear/brake-parking</property>
+    </condition>    
+      <volume>
+           <factor>2.0</factor>
+      </volume>
+       <reference-dist>100</reference-dist>
+    <max-dist>1000</max-dist>      
+    </click>
+
+    <click>
+      <name>brake-parking off</name>
+      <path>Aircraft/AUCAFLYCORE/Park-Break-Off.wav</path>
+       <condition>
+         <not>
+             <property>controls/gear/brake-parking</property>
+          </not>
+    </condition>    
+      <volume>
+           <factor>2.0</factor>
+      </volume>
+       <reference-dist>100</reference-dist>
+    <max-dist>1000</max-dist>      
+    </click>
+<click>
+      <name>indicator left</name>
+	<mode>looped</mode>
+      <path>Aircraft/AUCAFLYCORE/indicator.wav</path>
+       <condition>
+             <property>controls/lighting/indicator-left</property>
+    </condition>    
+      <volume>
+           <factor>2.0</factor>
+      </volume>
+       <reference-dist>100</reference-dist>
+    <max-dist>1000</max-dist>      
+    </click>
+<click>
+      <name>indicator right</name>
+	<mode>looped</mode>
+      <path>Aircraft/AUCAFLYCORE/indicator.wav</path>
+       <condition>
+             <property>controls/lighting/indicator-right</property>
+    </condition>    
+      <volume>
+           <factor>2.0</factor>
+      </volume>
+       <reference-dist>100</reference-dist>
+    <max-dist>1000</max-dist>      
+    </click>
+ <rumble>
+      <name>rumble</name>
+      <mode>looped</mode>
+      <path>Sounds/rumble.wav</path>
+      <condition>
+        <and>
+          <or>
+            <property>gear/gear[0]/wow</property>
+            <property>gear/gear[1]/wow</property>
+            <property>gear/gear[2]/wow</property>
+	<property>gear/gear[3]/wow</property>
+          </or>
+          <or>
+            <greater-than>
+              <property>gear/gear[0]/rollspeed-ms</property>
+              <value>1</value>
+            </greater-than>
+            <greater-than>
+              <property>gear/gear[1]/rollspeed-ms</property>
+              <value>1</value>
+            </greater-than>
+            <greater-than>
+              <property>gear/gear[2]/rollspeed-ms</property>
+              <value>1</value>
+            </greater-than>
+          </or>
+        </and>
+      </condition>
+      <volume>
+        <property>velocities/airspeed-kt</property>
+        <type>log</type>
+        <factor>0.5</factor>
+        <max>2.5</max>
+      </volume>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </rumble>
+<horn>
+		      <name>horn</name>
+		      <mode>once</mode>
+		      <path>Aircraft/AUCAFLYCORE/horn.wav</path>
+		      <condition>
+			
+			<equals>
+			  <property>sim/multiplay/generic/int[18]</property>
+			  <value>1</value>
+			</equals>
+			
+			</condition>
+			<volume>
+			  <factor>1</factor>
+			</volume>
+			<reference-dist>100</reference-dist>
+			<max-dist>1000</max-dist>
+		      </horn>
+
+ </fx>
+</PropertyList>

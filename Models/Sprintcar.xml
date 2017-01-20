@@ -1,0 +1,388 @@
+<PropertyList>
+<path>Sprintcar.ac</path>
+
+
+<nasal>
+  <load>
+    var livery_update = aircraft.livery_update.new("Aircraft/Sprintcar/Models/Liveries", 10);
+  </load>   
+  <unload>
+    livery_update.stop();
+  </unload>   
+</nasal>
+
+<sound>
+  <path>Aircraft/Sprintcar/Sounds/aucafly-sound.xml</path>
+</sound> 
+
+<!-- ========== Effects ========= -->
+<animation>
+  <type>material</type>
+  <object-name>Sprintcar-body</object-name>
+  <object-name>frontwheel2</object-name>
+<object-name>backwheel2</object-name>
+  <property-base>sim/model/livery</property-base>
+  <texture-prop>texture</texture-prop>
+  <texture>Liveries/BaseColor.png</texture>
+</animation>
+
+<!-- STEERINGWHEEL -->
+
+<animation>  
+ <type>rotate</type>  
+ <object-name>Steering</object-name>
+<object-name>horn</object-name>
+ <property>surface-positions/rudder-pos-norm</property>
+ <factor>100</factor>
+ <axis>
+  <x1-m>-0.02216</x1-m>
+  <y1-m>0.01182</y1-m>
+  <z1-m>0.77456</z1-m>
+  <x2-m>-0.02631</x2-m>
+  <y2-m>0.01182</y2-m>
+  <z2-m>0.77305</z2-m>
+ </axis>
+</animation>
+
+<animation>
+  <type>pick</type>
+  <object-name>horn</object-name>
+  <visible>true</visible>
+  <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+      <binding>
+        <command>property-assign</command>
+        <property>sim/multiplay/generic/int[18]</property>
+        <value>1</value>
+      </binding>
+    <mod-up>
+        <binding>
+        <command>property-assign</command>
+        <property>sim/multiplay/generic/int[18]</property>
+        <value>0</value>
+        </binding>
+    </mod-up>
+  </action>
+</animation>
+
+<!-- Wheels -->
+
+<animation>
+  <object-name>frontwheel</object-name>
+ <object-name>frontwheel2</object-name>
+  <type>rotate</type>
+  <property>controls/flight/rudder</property>
+  <factor>-4</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m> -1.2182 </x-m>
+   <y-m> 0   </y-m>
+   <z-m> 0.28591 </z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+ <animation>
+  <type>spin</type>
+  <object-name>frontwheel</object-name>
+ <object-name>frontwheel2</object-name>
+  <property>gear/gear[0]/rollspeed-ms</property>
+  <factor>10</factor>
+  <center>
+   <x-m> -1.2182 </x-m>
+   <y-m> 0   </y-m>
+   <z-m> 0.28591 </z-m>
+  </center>
+  <axis>
+	<x>0.0</x>
+   <y>-1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+<animation>
+ <type>spin</type>
+  <object-name>frontwheel</object-name>
+ <object-name>frontwheel2</object-name>
+ <property>sim/multiplay/generic/float[11]</property>
+ <factor>-6</factor>
+ <center>
+   <x-m> -1.2182 </x-m>
+   <y-m> 0   </y-m>
+   <z-m> 0.28591 </z-m>
+ </center>
+ <axis>
+  <x>0.0</x>
+  <y>1.0</y>
+  <z>0.0</z>
+ </axis>
+</animation>
+<animation>
+  <type>spin</type>
+  <object-name>backwheel</object-name>
+  <object-name>backwheel2</object-name>
+  <property>gear/gear[2]/rollspeed-ms</property>
+  <factor>5</factor>
+  <center>
+   <x-m> 0.71556 </x-m>
+   <y-m> 0   </y-m>
+   <z-m> 0.28591 </z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>-1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+<animation>
+ <type>spin</type>
+  <object-name>backwheel</object-name>
+  <object-name>backwheel2</object-name>
+ <property>sim/multiplay/generic/float[11]</property>
+ <factor>-6</factor>
+ <center>
+   <x-m> 0.71556 </x-m>
+   <y-m> 0   </y-m>
+   <z-m> 0.28591 </z-m>
+ </center>
+ <axis>
+  <x>0.0</x>
+  <y>1.0</y>
+  <z>0.0</z>
+ </axis>
+</animation>
+
+<!-- INSTRUMENTS -->
+
+<model> 
+ <path>Aircraft/Sprintcar/Models/Instruments/fuelgauge.xml</path>
+ <offsets> 
+  <x-m>-0.22804</x-m>
+  <y-m>0.00922</y-m>
+  <z-m>0.811</z-m>
+  <pitch-deg>-15.0</pitch-deg>
+ </offsets>
+</model>
+
+<!-- tank symbol for low fuel -->
+<model> 
+ <path>Aircraft/Sprintcar/Models/Instruments/fuel-reserve.xml</path>
+ <offsets> 
+  <x-m>-0.22804</x-m>
+  <y-m>0.025</y-m>
+  <z-m>0.80</z-m>
+  <pitch-deg>-15.0</pitch-deg>
+ </offsets>
+</model>
+
+
+<!-- LIGHTS -->
+
+<animation>
+<type>select</type>
+  <object-name>LL</object-name>
+<condition>
+<and>
+<property>/sim/rendering/rembrandt/enabled</property>
+<greater-than>
+            <property>/sim/time/sun-angle-rad</property>
+            <value>1.57</value>
+         </greater-than>
+      </and>
+</condition>
+ </animation>
+<animation>
+   <type>light</type>
+   <light-type>spot</light-type>
+   <name>LL</name>
+   <object-name>LL</object-name>
+   <nopreview/>
+   <position>
+     <x>-1.41042</x>
+     <y>-0.00703</y>
+     <z>0.22975</z>
+   </position>
+   <direction>
+     <x>-1.42</x>
+     <y>-0.00703</y>
+     <z>-0.1</z>
+   </direction>
+    <ambient>
+            <r>0.5</r>
+            <g>0.5</g>
+            <b>0.5</b>
+            <a>1.0</a>
+        </ambient>
+        <diffuse>
+            <r>0.7</r>
+            <g>0.7</g>
+            <b>0.6</b>
+            <a>1.0</a>
+        </diffuse>
+        <specular>
+            <r>0.8</r>
+            <g>0.8</g>
+            <b>0.8</b>
+            <a>1.0</a>
+        </specular>
+        <attenuation>
+            <c>1.0</c>
+            <l>0.002</l>
+            <q>0.00005</q>
+        </attenuation>
+        <exponent>30.0</exponent>
+        <cutoff>100</cutoff>
+        <near-m>2</near-m>
+        <far-m>1000</far-m>
+    </animation>
+<animation>
+ <type>material</type>
+  <object-name>Lights</object-name>
+<condition>
+<greater-than>
+            <property>/sim/time/sun-angle-rad</property>
+            <value>1.57</value>
+         </greater-than>
+</condition>
+ <emission>
+  <red>1.0</red>
+  <green>1.0</green>
+  <blue>1.0</blue>
+ </emission>
+</animation>
+
+
+<!-- Indicator lights-->
+  <animation>
+ <type>material</type>
+ <object-name>Left Indicator</object-name>
+ <emission>
+  <red>2.0</red>
+  <green>0.8</green>
+  <blue>0.2</blue>
+  <factor-prop>sim/multiplay/generic/int[9]</factor-prop>
+ </emission>
+</animation>
+
+<animation>
+ <type>material</type>
+ <object-name>Right Indicator</object-name>
+ <emission>
+  <red>1.0</red>
+  <green>1.0</green>
+  <blue>1.0</blue>
+  <factor-prop>sim/multiplay/generic/int[13]</factor-prop>
+ </emission>
+</animation>
+
+
+<!-- Braking lights-->  
+<animation>
+ <type>material</type>
+ <object-name>Brakes</object-name>
+<emission>
+  <red>1.0</red>
+  <green>1.0</green>
+  <blue>1.0</blue>
+  <factor-prop>sim/multiplay/generic/float[17]</factor-prop>
+ </emission>
+</animation>
+
+
+<!--  Engine Starter and Gear Controls  -->
+
+<model> 
+ <path>Aircraft/Sprintcar/Models/Instruments/starter.xml</path>
+ <offsets> 
+  <x-m>-0.23403</x-m>
+  <y-m>0.19458</y-m>
+  <z-m>0.83082</z-m>
+  <pitch-deg>-15.0</pitch-deg>
+ </offsets>
+</model>
+
+<model> 
+ <path>Aircraft/Sprintcar/Models/Instruments/P.xml</path>
+ <offsets> 
+  <x-m>-0.239</x-m>
+  <y-m>-0.20704</y-m>
+  <z-m>0.85986</z-m>
+  <pitch-deg>-10.0</pitch-deg>
+ </offsets>
+</model>
+<model> 
+ <path>Aircraft/Sprintcar/Models/Instruments/R.xml</path>
+ <offsets> 
+  <x-m>-0.239</x-m>
+  <y-m>-0.14525</y-m>
+  <z-m>0.85986</z-m>
+   <pitch-deg>-10.0</pitch-deg>
+ </offsets>
+</model>
+<model> 
+ <path>Aircraft/Sprintcar/Models/Instruments/N.xml</path>
+ <offsets> 
+  <x-m>-0.239</x-m>
+  <y-m>-0.08346</y-m>
+  <z-m>0.85987</z-m>
+   <pitch-deg>-10.0</pitch-deg>
+ </offsets>
+</model>
+<model> 
+ <path>Aircraft/Sprintcar/Models/Instruments/D.xml</path>
+ <offsets> 
+  <x-m>-0.232</x-m>
+  <y-m>-0.17614</y-m>
+  <z-m>0.83083</z-m>
+   <pitch-deg>-10.0</pitch-deg>
+ </offsets>
+</model>
+<model> 
+ <path>Aircraft/Sprintcar/Models/Instruments/D2.xml</path>
+ <offsets> 
+  <x-m>-0.227</x-m>
+  <y-m>-0.17614</y-m>
+  <z-m>0.8018</z-m>
+   <pitch-deg>-10.0</pitch-deg>
+ </offsets>
+</model>
+<!-- Accelerator & Decelerator-->
+<animation>
+  <type>pick</type>
+  <visible>true</visible>
+  <object-name>Accelerator</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+  <binding>
+   <command>property-adjust</command>
+    <property>/controls/engines/engine/throttle</property>
+<step>0.05</step>
+  <min>0</min>
+  <max>1</max>
+  <wrap>false</wrap>
+    </binding>
+  </action>
+ </animation>
+<animation>
+  <type>pick</type>
+  <visible>true</visible>
+  <object-name>Decelerator</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>true</repeatable>
+  <binding>
+   <command>property-adjust</command>
+    <property>/controls/engines/engine/throttle</property>
+<step>-0.05</step>
+  <min>0</min>
+  <max>1</max>
+  <wrap>false</wrap>
+    </binding>
+  </action>
+ </animation>
+</PropertyList>
