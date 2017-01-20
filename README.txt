@@ -1,6 +1,6 @@
 Hi,
 
-We would like to thank you for downloading our ErAZ 762.  This is without a doubt a project for motorists. 
+We would like to thank you for downloading our Splintcar.  This is without a doubt a project for motorists. 
 
 All our vehicles is capable of driving on most terrains. 
 
