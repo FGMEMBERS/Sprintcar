@@ -3,7 +3,9 @@
 <PropertyList>
 	
  <path>fuelgauge.ac</path>
-
+    ##############################################################################
+      # Written by Herbert W
+      ##############################################################################
  <animation>
   <type>material</type>
   <object-name>face</object-name>
