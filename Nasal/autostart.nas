@@ -1,3 +1,6 @@
+# =====
+# Written by Herbert Wagner
+# =====
 var autostart = func {
 setprop("/controls/engines/engine/direction", 0);
 setprop("/controls/gear/brake-parking", 1);

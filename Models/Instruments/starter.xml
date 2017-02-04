@@ -2,6 +2,9 @@
 
 <PropertyList>
  <path>knob_2.ac</path>
+    ##############################################################################
+      # Written by Herbert W
+      ##############################################################################
 <!--External panel lighting-->
 <animation>
   <type>material</type>

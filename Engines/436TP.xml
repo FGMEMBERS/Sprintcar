@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!--
+	Author:   Herbert Wagner
+-->
 
 <turbine_engine name="436TP">
   <milthrust> 236.3 </milthrust>
